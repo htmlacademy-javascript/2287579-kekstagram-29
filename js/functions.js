@@ -5,11 +5,9 @@ function whatLength(string, length) {
     return true;
   }
   return false;
-};
+}
 
-const result = whatLength('Я путаюсь в JS', 16);
-console.log(result);
-
+whatLength('Я путаюсь в JS', 16);
 
 // функция проверки на палиндром
 
@@ -27,7 +25,7 @@ const isPalindrome = (string) => {
   }
 
   return false;
-}
+};
 
 isPalindrome(' Лёша на полке клопа нашёл   ');
 
@@ -36,9 +34,9 @@ isPalindrome(' Лёша на полке клопа нашёл   ');
 function findDigits (unknownString) {
   let foundNumbers = '';
 
-  for (i = 0; i < unknownString.length; i++) {
+  for (let i = 0; i < unknownString.length; i++) {
     const inProgress = unknownString[i];
-    if (!Number.isNaN(parseInt(inProgress))) {
+    if (!Number.isNaN(parseInt(inProgress, 10))) {
       foundNumbers += inProgress;
     }
   }
@@ -47,7 +45,7 @@ function findDigits (unknownString) {
     return NaN;
   }
 
-  return parseInt(foundNumbers);
+  return parseInt(foundNumbers, 10);
 }
 
 findDigits('336 страниц и 1 человек');
