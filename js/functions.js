@@ -32,6 +32,7 @@ isPalindrome(' Лёша на полке клопа нашёл   ');
 // Функция принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа
 
 const findDigits = (unknownString) => {
+	unknownString = unknownString.toString();
 	let foundNumbers = '';
 
 	for (let i = 0; i < unknownString.length; i++) {
