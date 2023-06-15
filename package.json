@@ -23,7 +23,8 @@
 		"build": "tsc && vite build",
 		"preview": "vite preview",
 		"lint": "eslint js/",
-		"fix": "eslint js/ --fix"
+		"fix": "eslint js/ --fix",
+		"test": "vitest"
 	},
 	"engines": {
 		"node": "18",
