@@ -1,11 +1,11 @@
 // функция проверки длины строки
 
-whatLength = (string, length) => {
+const whatLength = (string, length) => {
 	if (string.length <= length) {
 		return true;
 	}
 	return false;
-}
+};
 
 whatLength('Я путаюсь в JS', 16);
 
@@ -31,7 +31,7 @@ isPalindrome(' Лёша на полке клопа нашёл   ');
 
 // Функция принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа
 
-findDigits = (unknownString) => {
+const findDigits = (unknownString) => {
 	let foundNumbers = '';
 
 	for (let i = 0; i < unknownString.length; i++) {
@@ -46,6 +46,6 @@ findDigits = (unknownString) => {
 	}
 
 	return parseInt(foundNumbers, 10);
-}
+};
 
 findDigits('336 страниц и 1 человек');
