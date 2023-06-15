@@ -1,6 +1,6 @@
 // функция проверки длины строки
 
-function whatLength(string, length) {
+whatLength = (string, length) => {
 	if (string.length <= length) {
 		return true;
 	}
@@ -31,7 +31,7 @@ isPalindrome(' Лёша на полке клопа нашёл   ');
 
 // Функция принимает строку, извлекает содержащиеся в ней цифры от 0 до 9 и возвращает их в виде целого положительного числа
 
-function findDigits (unknownString) {
+findDigits = (unknownString) => {
 	let foundNumbers = '';
 
 	for (let i = 0; i < unknownString.length; i++) {
