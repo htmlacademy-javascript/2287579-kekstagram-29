@@ -9,7 +9,7 @@ import {
 	COMMENT_LINES,
 	DESCRIPTIONS,
 	NAMES,
-} from './data.js';
+} from './constans.js';
 
 import { getRandomInteger } from './random_integer.js';
 
