@@ -1,4 +1,4 @@
-// Импорты 
+// Импорты
 
 import {
 	PICTURE_COUNT,
