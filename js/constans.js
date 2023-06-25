@@ -1,9 +1,8 @@
-export const PICTURE_COUNT = 25;
-export const AVATAR_COUNT = 6;
-export const LIKE_MIN_COUNT = 15;
-export const LIKE_MAX_COUNT = 200;
-export const COMMENT_COUNT = 20;
-export const COMMENT_LINES = [
+const PICTURE_COUNT = 25;
+const AVATAR_COUNT = 6; const LIKE_MIN_COUNT = 15;
+const LIKE_MAX_COUNT = 200;
+const COMMENT_COUNT = 20;
+const COMMENT_LINES = [
 	'Всё отлично!',
 	'В целом всё неплохо. Но не всё.',
 	'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -11,7 +10,7 @@ export const COMMENT_LINES = [
 	'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
 	'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
-export const DESCRIPTIONS = [
+const DESCRIPTIONS = [
 	'Летний чил',
 	'Не летний чил',
 	'Зимняя забава',
@@ -24,7 +23,7 @@ export const DESCRIPTIONS = [
 	'А я его знаю?',
 	'Кто это?',
 ];
-export const NAMES = [
+const NAMES = [
 	'Jose',
 	'Antonio',
 	'Makobic',
@@ -32,3 +31,13 @@ export const NAMES = [
 	'Человек',
 	'Дима',
 ];
+
+export {
+	PICTURE_COUNT,
+	AVATAR_COUNT,
+	LIKE_MAX_COUNT,
+	COMMENT_COUNT,
+	COMMENT_LINES,
+	DESCRIPTIONS,
+	NAMES,
+};
