@@ -1,28 +1,40 @@
-const thumbnailTemplate = document
-	.querySelector('#picture').content
-	.querySelector('.picture');
+import { openGallery } from './gallery.js';
 
-const container = document.querySelector('.pictures');
+const picturesContainer = document.querySelector('.pictures');
+const pictureTemplate = document.querySelector('#picture')?.content.querySelector('.picture');
 
-const createThumbnail = ({ comments, description, likes, url }) => {
-	const thumbnail = thumbnailTemplate.cloneNode(true);
+// Функция для отрисовки миниатюры фотографии
+const renderThumbnail = (picture) => {
+	const pictureLink = pictureTemplate.cloneNode(true);
+	const pictureImg = pictureLink.querySelector('.picture__img');
+	const pictureLikes = pictureLink.querySelector('.picture__likes');
+	const pictureComments = pictureLink.querySelector('.picture__comments');
 
-	thumbnail.querySelector('.picture__img').src = url;
-	thumbnail.querySelector('.picture__img').alt = description;
-	thumbnail.querySelector('.picture__comments').textContent = comments.length;
-	thumbnail.querySelector('.picture__likes').textContent = likes;
+	const {url, description, likes, comments} = picture;
 
-	return thumbnail;
-};
+	pictureImg.src = url;
+	pictureImg.alt = description;
+	pictureLikes.textContent = likes;
+	pictureComments.textContent = comments.length;
 
-const renderThumbnails = (pictures) => {
-	const fragment = document.createDocumentFragment();
-	pictures.forEach((picture) => {
-		const thumbnail = createThumbnail(picture);
-		fragment.append(thumbnail);
+	pictureLink.addEventListener('click', (evt) => {
+		evt.preventDefault();
+		openGallery(picture);
 	});
 
-	container.append(fragment);
+	return pictureLink;
+};
+
+/** Функция для отрисовки миниатюр всех фотографий */
+const renderThumbnails = (pictures) => {
+	const fragment = document.createDocumentFragment();
+
+	pictures.forEach((picture) => {
+		const thumbnail = renderThumbnail(picture);
+		fragment.appendChild(thumbnail);
+	});
+
+	picturesContainer.appendChild(fragment);
 };
 
 export { renderThumbnails };
