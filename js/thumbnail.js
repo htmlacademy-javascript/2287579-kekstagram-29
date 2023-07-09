@@ -1,16 +1,16 @@
 import { getPictures } from './data.js';
 import { openGallery } from './gallery.js';
 
+const picturesContainer = document.querySelector('.pictures');
+const pictureTemplate = document.querySelector('#picture')?.content.querySelector('.picture');
+
 // Функция для отрисовки миниатюры фотографии
 const renderThumbnail = (picture) => {
-	const pictureTemplate = document.querySelector('#picture');
-	const pictureElement = pictureTemplate.content.cloneNode(true);
-	const pictureLink = pictureElement.querySelector('.picture');
+	const pictureLink = pictureTemplate.cloneNode(true);
 	const pictureImg = pictureElement.querySelector('.picture__img');
 	const pictureLikes = pictureElement.querySelector('.picture__likes');
 	const pictureComments = pictureElement.querySelector('.picture__comments');
 
-	pictureLink.href = '#';
 	pictureImg.src = picture.url;
 	pictureImg.alt = picture.description;
 	pictureLikes.textContent = picture.likes;
@@ -24,7 +24,7 @@ const renderThumbnail = (picture) => {
 	return pictureElement;
 };
 
-// Функция для отрисовки миниатюр всех фотографий
+/** Функция для отрисовки миниатюр всех фотографий */
 const renderThumbnails = (pictures) => {
 	const fragment = document.createDocumentFragment();
 
@@ -33,7 +33,6 @@ const renderThumbnails = (pictures) => {
 		fragment.appendChild(thumbnail);
 	});
 
-	const picturesContainer = document.querySelector('.pictures');
 	picturesContainer.appendChild(fragment);
 };
 
