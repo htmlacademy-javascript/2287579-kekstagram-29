@@ -60,4 +60,3 @@ const getPictures = () => Array.from(
 getPictures();
 
 export { getPictures };
-
