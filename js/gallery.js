@@ -1,5 +1,10 @@
 import { clearComments, renderComments } from './comments.js';
 
+// работа по показу 5 комментариев
+const commentsCount = document.querySelector('.comments-count');
+const commentsLoader = document.querySelector('.comments-loader');
+//
+
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImg = bigPicture.querySelector('.big-picture__img img');
 const likesCount = bigPicture.querySelector('.likes-count');
@@ -9,6 +14,10 @@ const socialCaption = bigPicture.querySelector('.social__caption');
 const body = document.body;
 const closeButton = bigPicture.querySelector('#picture-cancel');
 
+// работа по показу 5 комментариев
+commentsCount.classList.remove('hidden');
+commentsLoader.classList.remove('hidden');
+//
 
 /**  Функция для закрытия окна по нажатию клавиши Esc */
 const onDocumentKeyDown = (evt) => {
