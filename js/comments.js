@@ -1,8 +1,19 @@
+import './thumbnail.js';
+
 const template = document.querySelector('#comment')?.content.querySelector('.social__comment');
-const commentsCount = document.querySelector('.comments-count');
-const socialComments = document.querySelector('.social__comments');
+const wrapperElement = document.querySelector('.social__comments');
+const statusElement = document.querySelector('.social__comment-count');
 
+// работа по показу 5 комментариев
+const loaderButton = document.querySelector('.comments-loader');
 
+/** @type {Object[]} массив комментриев октрытой модалки */
+let currentComments = [];
+//
+
+/**
+ * Создания разметко одного комментария
+ */
 const renderComment = (comment) => {
 	const commentElement = template.cloneNode(true);
 	const imageElement = commentElement.querySelector('.social__picture');
@@ -19,22 +30,40 @@ const renderComment = (comment) => {
 	return commentElement;
 };
 
+loaderButton.addEventListener('click', () => {
+	const currentCommentsCount = wrapperElement.childElementCount;
+	let endOfSlice = currentCommentsCount + 5;
+	const isAllComments = endOfSlice >= currentComments.length;
+	endOfSlice = endOfSlice > currentComments.length ? currentComments.length : endOfSlice;
 
-// Ctrl Alt F
-const renderComments = (comments) => {
-
-	commentsCount.textContent = comments.length;
-
+	// работа по показу 5 комментариев
+	const commentsToRender = currentComments.slice(currentCommentsCount, endOfSlice);
+	//
 	const fragment = document.createDocumentFragment();
 
 	// Добавление комментариев в список
-	comments.forEach((comment) => {
+	// работа по показу 5 комментариев. меняю comments. на commentsToRender
+	commentsToRender.forEach((comment) => {
 		fragment.appendChild(renderComment(comment));
 	});
-	socialComments.appendChild(fragment);
 
+	//
+	wrapperElement.appendChild(fragment);
+
+	statusElement.textContent = `${endOfSlice} из ${currentComments.length} комментариев`;
+
+	loaderButton.classList.toggle('hidden', isAllComments);
+});
+
+
+const renderComments = (comments) => {
+	currentComments = comments;
+	loaderButton.click();
 };
 
-const clearComments = () => {};
+const clearComments = () => {
+	wrapperElement.innerHTML = '';
+	currentComments = [];
+};
 
 export { renderComments, clearComments };
