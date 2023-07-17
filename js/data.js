@@ -57,6 +57,18 @@ const getPictures = () => Array.from(
 	(_, pictureIndex) => createPicture(pictureIndex + 1),
 );
 
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+/* eslint-disable */
+const isUniqueArr = (array) => {
+	const duplicates = array.filter((number, index, numbers) => {
+		return numbers.indexOf(number) !== index
+	});
+	return duplicates.length <= 0;
+};
+/* eslint-enable */
+
+
 getPictures();
 
-export { getPictures };
+export { getPictures, isEscapeKey, isUniqueArr };
