@@ -21,6 +21,10 @@ const scaleDown = () => {
 	}
 };
 
+const resetScale = () => {
+	imagePreview.style.transform = 'scale(1)';
+};
+
 biggerButton.addEventListener('click', () => {
 	scaleUp();
 });
@@ -28,3 +32,5 @@ biggerButton.addEventListener('click', () => {
 smallerButton.addEventListener('click', () => {
 	scaleDown();
 });
+
+export { resetScale };
