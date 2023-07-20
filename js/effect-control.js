@@ -22,11 +22,7 @@ noUiSlider.create(wrapperSlider, {
 	connect: 'lower'
 });
 
-const hideFilters = () => {
-	sliderContainer.style.display = 'none';
-};
-
-const resetFilters = (min = 0, max = 1, step = 0.1) => {
+const updateSliderOptions = (min = 0, max = 1, step = 0.1) => {
 	wrapperSlider.noUiSlider.updateOptions({
 		range: {
 			min,
@@ -37,48 +33,47 @@ const resetFilters = (min = 0, max = 1, step = 0.1) => {
 	});
 };
 
-let choicedFilter = 'none';
+let selectedEffect = 'none';
 
-hideFilters();
+sliderContainer.hidden = true;
 
 const changeEffect = () => {
-	sliderContainer.style.display = '';
-	switch (choicedFilter) {
+	sliderContainer.hidden = selectedEffect === 'none';
+	switch (selectedEffect) {
 		case 'chrome':
-			resetFilters();
+			updateSliderOptions();
 			break;
 		case 'sepia':
-			resetFilters();
+			updateSliderOptions();
 			break;
 		case 'marvin':
-			resetFilters(0, 100, 1);
+			updateSliderOptions(0, 100, 1);
 			break;
 		case 'phobos':
-			resetFilters(0, 3, 0.1);
+			updateSliderOptions(0, 3, 0.1);
 			break;
 		case 'heat':
-			resetFilters(1, 3, 0.1);
+			updateSliderOptions(1, 3, 0.1);
 			break;
 		default:
-			resetFilters();
-			hideFilters();
+			updateSliderOptions();
 	}
 };
 
 effectsList.addEventListener('change', (evt) => {
-	choicedFilter = evt.target.value;
+	selectedEffect = evt.target.value;
 	changeEffect();
 });
 
 form.addEventListener('reset', () => {
-	choicedFilter = 'none';
+	selectedEffect = 'none';
 	changeEffect();
 });
 
 
 wrapperSlider.noUiSlider.on('update', () => {
 	effectValueInput.value = wrapperSlider.noUiSlider.get();
-	switch (choicedFilter) {
+	switch (selectedEffect) {
 		case 'chrome':
 			imagePreview.style.filter = `grayscale(${effectValueInput.value})`;
 			break;
@@ -99,3 +94,8 @@ wrapperSlider.noUiSlider.on('update', () => {
 	}
 	filterValue.value = imagePreview.style.filter;
 });
+
+export const resetEffect = () => {
+	selectedEffect = 'none';
+	changeEffect();
+};
