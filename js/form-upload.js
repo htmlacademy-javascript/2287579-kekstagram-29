@@ -1,13 +1,13 @@
 import { isEscapeKey } from './data.js';
+import { resetScale } from './scale-control.js';
+import { resetEffect } from './effect-control.js';
+import { resetValidation } from './form-validation.js';
 
 const form = document.querySelector('.img-upload__form');
 const imgUploadInput = form.querySelector('.img-upload__input');
-const inputScale = form.querySelector('input[name="scale"]');
-const inputEffectLevel = form.querySelector('input[name="effect-level"]');
 const inputHashtag = form.querySelector('input[name="hashtags"]');
 const textDescription = form.querySelector('.text__description');
 const imgUploadOverlay = form.querySelector('.img-upload__overlay');
-const buttonImgUploadCancel = form.querySelector('.img-upload__cancel');
 
 const startUpload = () => {
 	imgUploadOverlay.classList.remove('hidden');
@@ -15,30 +15,25 @@ const startUpload = () => {
 	document.addEventListener('keydown', onDocumentKeyDown);
 };
 
-const cancelUpload = () => {
+const closeModal = () => form.reset();
+
+form.addEventListener('reset', () => {
+	resetScale();
+	resetEffect();
+	resetValidation();
 	imgUploadOverlay.classList.add('hidden');
 	document.body.classList.remove('modal-open');
-	imgUploadInput.value = '';
-	inputScale.value = '';
-	inputEffectLevel.value = '';
-	inputHashtag.value = '';
-	textDescription.value = '';
-	form.reset();
 	document.removeEventListener('keydown', onDocumentKeyDown);
-};
+});
 
 imgUploadInput.addEventListener('change', () => {
 	startUpload();
 });
 
-buttonImgUploadCancel.addEventListener('click', () => {
-	cancelUpload();
-});
-
-function onDocumentKeyDown (evt) {
+function onDocumentKeyDown(evt) {
 	if (isEscapeKey(evt)) {
 		evt.preventDefault();
-		cancelUpload();
+		closeModal();
 	}
 }
 
