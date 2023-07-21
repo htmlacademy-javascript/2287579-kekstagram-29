@@ -44,3 +44,5 @@ function onDocumentKeyDown(evt) {
 		}
 	});
 });
+
+export { closeModal };
