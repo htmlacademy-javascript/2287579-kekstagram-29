@@ -1,7 +1,14 @@
 import { isUniqueArr } from './data.js';
 
+const SubmitButtonText = {
+	IDLE: 'Опубликовать',
+	SUBMITTING: 'Отправляю...',
+};
+
 const form = document.querySelector('.img-upload__form');
 const inputHashtag = form.querySelector('input[name="hashtags"]');
+const submitButton = form.querySelector('.img-upload__submit');
+
 let hashtagArray = [];
 
 const pristine = new Pristine(form, {
@@ -34,3 +41,25 @@ form.addEventListener('submit', (evt) => {
 });
 
 export const resetValidation = () => pristine.reset();
+
+const toggleSubmitButton = (isDisabled) => {
+	submitButton.disabled = isDisabled;
+	submitButton.textContent = isDisabled
+		? SubmitButtonText.SUBMITTING
+		: SubmitButtonText.IDLE;
+};
+
+const setOnFormSubmit = (callback) => {
+	form.addEventListener('submit', async (evt) => {
+		evt.preventDefault();
+		const isValid = pristine.validate();
+
+		if (isValid) {
+			toggleSubmitButton(true);
+			await callback(new FormData(form));
+			toggleSubmitButton();
+		}
+	});
+};
+
+export { setOnFormSubmit };

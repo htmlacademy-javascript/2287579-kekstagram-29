@@ -45,4 +45,4 @@ function onDocumentKeyDown(evt) {
 	});
 });
 
-export { closeModal };
+export { closeModal, startUpload };
