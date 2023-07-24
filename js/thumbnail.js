@@ -26,7 +26,9 @@ const renderThumbnail = (picture) => {
 };
 
 /** Функция для отрисовки миниатюр всех фотографий */
-const renderThumbnails = (pictures) => {
+const renderThumbnails = (pictures, container) => {
+	container.querySelectorAll('.picture').forEach((element) => element.remove());
+
 	const fragment = document.createDocumentFragment();
 
 	pictures.forEach((picture) => {
@@ -34,7 +36,8 @@ const renderThumbnails = (pictures) => {
 		fragment.appendChild(thumbnail);
 	});
 
-	picturesContainer.appendChild(fragment);
+	picturesContainer.appendChild(fragment); //??
+	// container.append(fragment);
 };
 
 export { renderThumbnails };

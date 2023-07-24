@@ -6,7 +6,7 @@ import { debounce, showAlert } from './util.js';
 import { closeModal } from './form-upload.js';
 import { showErrorMessage, showSuccessMessage } from './message.js';
 import { setOnFormSubmit } from './form-validation.js';
-import { initFilter, getFilteredPictures } from './filter.js';
+import { init as initFilter, getFilteredPictures } from './filter.js';
 
 const pictures = getPictures();
 renderThumbnails(pictures);
