@@ -27,7 +27,7 @@ const renderThumbnail = (picture) => {
 
 /** Функция для отрисовки миниатюр всех фотографий */
 const renderThumbnails = (pictures, container) => {
-	container.querySelectorAll('.picture').forEach((element) => element.remove());
+	// container.querySelectorAll('.picture').forEach((element) => element.remove());
 
 	const fragment = document.createDocumentFragment();
 
@@ -36,8 +36,8 @@ const renderThumbnails = (pictures, container) => {
 		fragment.appendChild(thumbnail);
 	});
 
-	picturesContainer.appendChild(fragment); //??
-	// container.append(fragment);
+	picturesContainer.appendChild(fragment); //было
+	// container.append(fragment); // из ретро
 };
 
 export { renderThumbnails };
