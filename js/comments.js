@@ -12,7 +12,7 @@ let currentComments = [];
 //
 
 /**
- * Создания разметко одного комментария
+ * Создания разметки одного комментария
  */
 const renderComment = (comment) => {
 	const commentElement = template.cloneNode(true);
