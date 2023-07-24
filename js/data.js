@@ -11,7 +11,7 @@ import {
 	NAMES,
 } from './constans.js';
 
-import { getRandomInteger } from './random_integer.js';
+import { getRandomInteger } from './random-integer.js';
 
 // Основной код
 

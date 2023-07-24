@@ -11,7 +11,6 @@ const isValidType = (file) => {
 	return FILE_TYPES.some((it) => fileName.endsWith(it));
 };
 
-//не могу понять куда экспортировать ее
 const onFileInputChange = () => {
 	const file = fileField.files[0];
 
