@@ -26,7 +26,6 @@ const renderThumbnail = (picture) => {
 };
 
 /** Функция для отрисовки миниатюр всех фотографий */
-// добавил на 31 строку запись по аналогии с ретро
 const renderThumbnails = (pictures) => {
 	picturesContainer.querySelectorAll('.picture').forEach((element) => element.remove()); // из ретро - но ломает код и доп агргумент container
 
@@ -37,8 +36,7 @@ const renderThumbnails = (pictures) => {
 		fragment.appendChild(thumbnail);
 	});
 
-	picturesContainer.appendChild(fragment); //было
-	// container.append(fragment); // из ретро
+	picturesContainer.appendChild(fragment);
 };
 
 export { renderThumbnails };

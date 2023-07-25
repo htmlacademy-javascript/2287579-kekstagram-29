@@ -38,23 +38,20 @@ loaderButton.addEventListener('click', () => {
 
 	// работа по показу 5 комментариев
 	const commentsToRender = currentComments.slice(currentCommentsCount, endOfSlice);
-	//
+
 	const fragment = document.createDocumentFragment();
 
 	// Добавление комментариев в список
-	// работа по показу 5 комментариев. меняю comments. на commentsToRender
 	commentsToRender.forEach((comment) => {
 		fragment.appendChild(renderComment(comment));
 	});
 
-	//
 	wrapperElement.appendChild(fragment);
 
 	statusElement.textContent = `${endOfSlice} из ${currentComments.length} комментариев`;
 
 	loaderButton.classList.toggle('hidden', isAllComments);
 });
-
 
 const renderComments = (comments) => {
 	currentComments = comments;

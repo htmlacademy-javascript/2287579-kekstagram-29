@@ -70,7 +70,6 @@ form.addEventListener('reset', () => {
 	changeEffect();
 });
 
-
 wrapperSlider.noUiSlider.on('update', () => {
 	effectValueInput.value = wrapperSlider.noUiSlider.get();
 	switch (selectedEffect) {

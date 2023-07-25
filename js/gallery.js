@@ -31,15 +31,10 @@ function closeGallery() {
 
 /** Функция для открытия полноразмерного изображения */
 const openGallery = (picture) => {
-
 	bigPictureImg.src = picture.url;
 	likesCount.textContent = picture.likes;
-
 	socialCaption.textContent = picture.description;
-
-	// Удаление класса hidden у элемента .big-picture
 	bigPicture.classList.remove('hidden');
-	// Добавление класса modal-open к элементу body
 	body.classList.add('modal-open');
 
 	renderComments(picture.comments);
