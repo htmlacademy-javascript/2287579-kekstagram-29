@@ -27,4 +27,11 @@ const debounce = (callback, timeoutDelay = 500) => {
 	};
 };
 
-export { showAlert, debounce };
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+const isUniqueArr = (array) => {
+	const duplicates = array.filter((number, index, numbers) => numbers.indexOf(number) !== index);
+	return duplicates.length <= 0;
+};
+
+export { showAlert, isEscapeKey, isUniqueArr, debounce };

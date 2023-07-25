@@ -21,7 +21,7 @@ const getFilteredPictures = () => {
 		case Filter.DISCUSSED:
 			return [...pictures].sort(sortByComments);
 		default:
-			return [...pictures];
+			return pictures;
 	}
 };
 

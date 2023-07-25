@@ -1,4 +1,4 @@
-import { isUniqueArr } from './data.js';
+import { isUniqueArr } from './util.js';
 
 const SubmitButtonText = {
 	IDLE: 'Опубликовать',

@@ -7,7 +7,7 @@ const errorMessage = document
 const body = document.querySelector('body');
 
 function hideMessage() {
-	const messageElement = document.querySelector('.success' || document.querySelector('.error'));
+	const messageElement = document.querySelector('.success') || document.querySelector('.error'); //ошибка
 	messageElement.remove();
 	document.removeEventListener('keydown', onDocumentKeyDown);
 	body.removeEventListener('click', onBodyClick);

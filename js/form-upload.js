@@ -1,4 +1,4 @@
-import { isEscapeKey } from './data.js';
+import { isEscapeKey } from './util.js';
 import { resetScale } from './scale-control.js';
 import { resetEffect } from './effect-control.js';
 import { resetValidation } from './form-validation.js';
