@@ -28,7 +28,7 @@ const updateSliderOptions = (min = 0, max = 1, step = 0.1) => {
 			min,
 			max,
 		},
-		start: 0,
+		start: 100,
 		step,
 	});
 };
@@ -69,7 +69,6 @@ form.addEventListener('reset', () => {
 	selectedEffect = 'none';
 	changeEffect();
 });
-
 
 wrapperSlider.noUiSlider.on('update', () => {
 	effectValueInput.value = wrapperSlider.noUiSlider.get();

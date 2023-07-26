@@ -19,4 +19,19 @@ const showAlert = (message) => {
 	}, ALERT_SHOW_TIME);
 };
 
-export { showAlert };
+const debounce = (callback, timeoutDelay = 500) => {
+	let timeoutId;
+	return (...rest) => {
+		clearTimeout(timeoutId);
+		timeoutId = setTimeout(() => callback.apply(this, rest), timeoutDelay);
+	};
+};
+
+const isEscapeKey = (evt) => evt.key === 'Escape';
+
+const isUniqueArr = (array) => {
+	const duplicates = array.filter((number, index, numbers) => numbers.indexOf(number) !== index);
+	return duplicates.length <= 0;
+};
+
+export { showAlert, isEscapeKey, isUniqueArr, debounce };

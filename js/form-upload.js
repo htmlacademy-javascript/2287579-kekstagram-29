@@ -1,7 +1,8 @@
-import { isEscapeKey } from './data.js';
+import { isEscapeKey } from './util.js';
 import { resetScale } from './scale-control.js';
 import { resetEffect } from './effect-control.js';
 import { resetValidation } from './form-validation.js';
+import { onFileInputChange } from './upload-img.js';
 
 const form = document.querySelector('.img-upload__form');
 const imgUploadInput = form.querySelector('.img-upload__input');
@@ -28,6 +29,7 @@ form.addEventListener('reset', () => {
 
 imgUploadInput.addEventListener('change', () => {
 	startUpload();
+	onFileInputChange();
 });
 
 function onDocumentKeyDown(evt) {
