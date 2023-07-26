@@ -25,7 +25,7 @@ const renderThumbnail = (picture) => {
 	return pictureLink;
 };
 
-/** Функция для отрисовки миниатюр всех фотографий */
+// Функция для отрисовки миниатюр всех фотографий
 const renderThumbnails = (pictures) => {
 	picturesContainer.querySelectorAll('.picture').forEach((element) => element.remove()); // из ретро - но ломает код и доп агргумент container
 
