@@ -70,6 +70,36 @@ form.addEventListener('reset', () => {
 	changeEffect();
 });
 
+// wrapperSlider.noUiSlider.on('update', () => {
+// 	const effectValue = wrapperSlider.noUiSlider.get();
+// 	effectValueInput.value = effectValue;
+
+// 	// Округлить значение до двух знаков после запятой
+// 	const roundedEffectValue = parseFloat(effectValue).toFixed(2);
+
+// 	switch (selectedEffect) {
+// 		case 'chrome':
+// 			imagePreview.style.filter = `grayscale(${roundedEffectValue})`;
+// 			break;
+// 		case 'sepia':
+// 			imagePreview.style.filter = `sepia(${roundedEffectValue})`;
+// 			break;
+// 		case 'marvin':
+// 			imagePreview.style.filter = `invert(${roundedEffectValue}100%)`;
+// 			break;
+// 		case 'phobos':
+// 			imagePreview.style.filter = `blur(${roundedEffectValue}px)`;
+// 			break;
+// 		case 'heat':
+// 			imagePreview.style.filter = `brightness(${roundedEffectValue})`;
+// 			break;
+// 		default:
+// 			imagePreview.style.filter = '';
+// 	}
+// 	filterValue.value = imagePreview.style.filter;
+// });
+
+
 wrapperSlider.noUiSlider.on('update', () => {
 	effectValueInput.value = wrapperSlider.noUiSlider.get();
 	switch (selectedEffect) {
