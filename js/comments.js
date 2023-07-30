@@ -1,16 +1,19 @@
 import './thumbnail.js';
 
+const PACK_COUNT = 5;
+
 const template = document.querySelector('#comment')?.content.querySelector('.social__comment');
-const wrapperElement = document.querySelector('.social__comments');
-const statusElement = document.querySelector('.social__comment-count');
-const loaderButton = document.querySelector('.comments-loader');
+const list = document.querySelector('.social__comments');
+const status = document.querySelector('.social__comment-count');
+const loader = document.querySelector('.comments-loader');
+const allCount = status?.querySelector('.comments-count');
+const renderedCount = status?.querySelector('.comments-rendered');
 
 /** @type {Object[]} массив комментриев октрытой модалки */
 let currentComments = [];
-//
 
 /**
- * Создания разметки одного комментария
+ * Создание разметки одного комментария
  */
 const renderComment = (comment) => {
 	const commentElement = template.cloneNode(true);
@@ -28,34 +31,38 @@ const renderComment = (comment) => {
 	return commentElement;
 };
 
-loaderButton.addEventListener('click', () => {
-	const currentCommentsCount = wrapperElement.childElementCount;
-	let endOfSlice = currentCommentsCount + 5;
-	const isAllComments = endOfSlice >= currentComments.length;
+loader.addEventListener('click', () => {
+	const currentCount = list.childElementCount;
 
-	endOfSlice = endOfSlice > currentComments.length ? currentComments.length : endOfSlice;
+	let endOfSlice = currentCount + PACK_COUNT;
+	const isAllWillBeShown = endOfSlice >= currentComments.length;
+	endOfSlice = isAllWillBeShown ? currentComments.length : endOfSlice;
 
-	const commentsToRender = currentComments.slice(currentCommentsCount, endOfSlice);
+	const nextPackComments = currentComments.slice(currentCount, endOfSlice);
 	const fragment = document.createDocumentFragment();
 
+	renderedCount.textContent = endOfSlice.toString();
+
+	loader.hidden = isAllWillBeShown;
+
 	// Добавление комментариев в список
-	commentsToRender.forEach((comment) => {
+	nextPackComments.forEach((comment) => {
 		fragment.appendChild(renderComment(comment));
 	});
-
-	wrapperElement.appendChild(fragment);
-	statusElement.textContent = `${endOfSlice} из ${currentComments.length} комментариев`;
-	loaderButton.classList.toggle('hidden', isAllComments);
+	list.appendChild(fragment);
+	loader.classList.toggle('hidden', isAllWillBeShown);
 });
 
 const renderComments = (comments) => {
 	currentComments = comments;
-	loaderButton.click();
+	allCount.textContent = comments.length.toString();
+	loader.click();
 };
 
 const clearComments = () => {
-	wrapperElement.innerHTML = '';
+	list.innerHTML = '';
 	currentComments = [];
 };
+
 
 export { renderComments, clearComments };

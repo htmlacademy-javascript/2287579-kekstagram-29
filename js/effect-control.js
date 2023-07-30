@@ -5,13 +5,6 @@ const sliderContainer = document.querySelector('.img-upload__effect-level');
 const imagePreview = document.querySelector('.img-upload__preview img');
 const effectsList = document.querySelector('.effects__list');
 
-const filterValue = document.createElement('input');
-filterValue.classList.add('filter-value');
-filterValue.setAttribute('type', 'hidden');
-filterValue.setAttribute('name', 'filter-value');
-filterValue.setAttribute('value', '');
-form.append(filterValue);
-
 noUiSlider.create(wrapperSlider, {
 	range: {
 		min: 0,
@@ -28,7 +21,7 @@ const updateSliderOptions = (min = 0, max = 1, step = 0.1) => {
 			min,
 			max,
 		},
-		start: 100,
+		start: max,
 		step,
 	});
 };
@@ -80,7 +73,7 @@ wrapperSlider.noUiSlider.on('update', () => {
 			imagePreview.style.filter = `sepia(${effectValueInput.value})`;
 			break;
 		case 'marvin':
-			imagePreview.style.filter = `invert(${effectValueInput.value}100%)`;
+			imagePreview.style.filter = `invert(${effectValueInput.value}%)`;
 			break;
 		case 'phobos':
 			imagePreview.style.filter = `blur(${effectValueInput.value}px)`;
@@ -91,7 +84,6 @@ wrapperSlider.noUiSlider.on('update', () => {
 		default:
 			imagePreview.style.filter = '';
 	}
-	filterValue.value = imagePreview.style.filter;
 });
 
 export const resetEffect = () => {

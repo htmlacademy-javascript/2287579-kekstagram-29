@@ -7,9 +7,9 @@ const errorMessage = document
 const body = document.querySelector('body');
 
 function hideMessage() {
-	const messageElement = document.querySelector('.success') || document.querySelector('.error'); //ошибка
+	const messageElement = document.querySelector('.success') || document.querySelector('.error');
 	messageElement.remove();
-	document.removeEventListener('keydown', onDocumentKeyDown);
+	document.removeEventListener('keydown', onDocumentKeyDown, true); //true 3-им параметром для реализации поэтапного закрытия модалок по ESC
 	body.removeEventListener('click', onBodyClick);
 }
 
@@ -25,14 +25,14 @@ function onBodyClick(evt) {
 
 function onDocumentKeyDown(evt) {
 	if (evt.key === 'Escape') {
-		evt.preventDefault();
+		evt.stopPropagation(); //добавил для поэтапного закрытия модалок(сначала окна с ошибкой, потом форма фотографий)
 		hideMessage();
 	}
 }
 
 const showMessage = (messageElement, closeButtonClass) => {
 	body.append(messageElement);
-	document.addEventListener('keydown', onDocumentKeyDown);
+	document.addEventListener('keydown', onDocumentKeyDown, true); //true 3-им параметром для реализации поэтапного закрытия модалок по ESC
 	body.addEventListener('click', onBodyClick);
 	messageElement.querySelector(closeButtonClass).addEventListener('click', hideMessage);
 };
