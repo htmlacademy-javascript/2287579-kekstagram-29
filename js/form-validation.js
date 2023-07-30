@@ -1,5 +1,8 @@
 import { isUniqueArr } from './util.js';
 
+const HASHTAG_REGEXP = /^#(?=.*[^0-9])[a-zа-яё0-9]{1,19}$/i;
+const MAX_HASHTAG_LENGTH = 5;
+
 const SubmitButtonText = {
 	IDLE: 'Опубликовать',
 	SUBMITTING: 'Отправляю...',
@@ -22,23 +25,15 @@ inputHashtag.addEventListener('blur', () => {
 	pristine.validate();
 });
 
-const isValidHashtag = () => {
-	const hashtagPattern = /^#(?=.*[^0-9])[a-zа-яё0-9]{1,19}$/i;
-	return hashtagArray.every((item) => hashtagPattern.test(item));
-};
+const isValidHashtag = () => hashtagArray.every((item) => HASHTAG_REGEXP.test(item));
 
-const isValidAmount = () => hashtagArray.length < 5;
+const isValidAmount = () => hashtagArray.length <= MAX_HASHTAG_LENGTH;
 
 const isUniqueHashtag = () => isUniqueArr(hashtagArray);
 
 pristine.addValidator(inputHashtag, isValidHashtag, 'невалидный хэш-тег');
 pristine.addValidator(inputHashtag, isValidAmount, 'не больше 5 хэш-тегов');
 pristine.addValidator(inputHashtag, isUniqueHashtag, 'хэш-теги не должны повторяться');
-
-form.addEventListener('submit', (evt) => {
-	evt.preventDefault();
-	pristine.validate();
-});
 
 export const resetValidation = () => pristine.reset();
 
