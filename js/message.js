@@ -25,7 +25,7 @@ function onBodyClick(evt) {
 
 function onDocumentKeyDown(evt) {
 	if (evt.key === 'Escape') {
-		evt.stopPropagation(); //добавил для поэтапного закрытия модалок(сначала окна с ошибкой, потом форма фотографий)
+		evt.stopPropagation(); //добавил для поэтапного закрытия модалок(сначала окна с ошибкой, потом форма редактирования фотографий)
 		hideMessage();
 	}
 }
