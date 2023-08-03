@@ -2,7 +2,7 @@ const Options = {
 	MARVIN: [0, 100, 1],
 	PHOBOS: [0, 3, 0.1],
 	HEAT: [1, 3, 0.1],
-}
+};
 
 const form = document.querySelector('.img-upload__form');
 const wrapperSlider = document.querySelector('.effect-level__slider');

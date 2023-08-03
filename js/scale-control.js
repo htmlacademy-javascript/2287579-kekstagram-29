@@ -2,7 +2,7 @@ const ScaleInfo = {
 	MIN: 25,
 	MAX: 100,
 	STEP: 25,
-}
+};
 
 const smallerButton = document.querySelector('.scale__control--smaller');
 const biggerButton = document.querySelector('.scale__control--bigger');
